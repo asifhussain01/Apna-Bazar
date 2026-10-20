@@ -76,8 +76,11 @@ app.get('/', (req: Request, res: Response) => {
 // Mount Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/product', productRoutes); // alias for singular
 app.use('/api/categories', categoryRoutes);
+app.use('/api/category', categoryRoutes); // alias for singular
 app.use('/api/orders', orderRoutes);
+app.use('/api/order', orderRoutes); // alias for singular
 app.use('/api/admin', adminRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/settings', settingsRoutes);
