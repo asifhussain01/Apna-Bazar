@@ -2,26 +2,10 @@ import { Platform } from 'react-native';
 import Constants from 'expo-constants';
 import { io, Socket } from 'socket.io-client';
 
+const PRODUCTION_SOCKET_URL = 'https://apna-bazar-api-2.onrender.com';
+
 const getSocketServerUrl = (): string => {
-  if (Platform.OS === 'web') {
-    return 'http://localhost:5000';
-  }
-
-  const hostUri =
-    Constants.expoConfig?.hostUri ||
-    (Constants as any).manifest2?.extra?.expoGo?.debuggerHost ||
-    (Constants as any).manifest?.debuggerHost;
-
-  if (hostUri) {
-    const ip = hostUri.split(':')[0];
-    return `http://${ip}:5000`;
-  }
-
-  if (Platform.OS === 'android') {
-    return 'http://10.0.2.2:5000';
-  }
-
-  return 'http://localhost:5000';
+  return PRODUCTION_SOCKET_URL;
 };
 
 const SOCKET_SERVER_URL = getSocketServerUrl();

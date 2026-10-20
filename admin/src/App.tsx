@@ -51,7 +51,7 @@ export const App: React.FC = () => {
     const socketUrl =
       (import.meta as any).env?.VITE_SOCKET_URL ||
       (import.meta as any).env?.VITE_API_URL?.replace(/\/api\/?$/, '') ||
-      'http://localhost:5000';
+      'https://apna-bazar-api-2.onrender.com';
 
     const socket: Socket = io(socketUrl, {
       transports: ['websocket', 'polling']

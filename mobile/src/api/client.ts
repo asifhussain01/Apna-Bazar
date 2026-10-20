@@ -2,29 +2,11 @@ import { Platform } from 'react-native';
 import Constants from 'expo-constants';
 import { useAuthStore } from '../store/authStore';
 
+const PRODUCTION_API_URL = 'https://apna-bazar-api-2.onrender.com/api';
+
 // Automatically detect host IP when running on physical phone or emulator
 const getApiBaseUrl = (): string => {
-  if (Platform.OS === 'web') {
-    return 'http://localhost:5000/api';
-  }
-
-  // When loaded on a physical phone via Expo Go, hostUri contains "192.168.x.x:8081"
-  const hostUri =
-    Constants.expoConfig?.hostUri ||
-    (Constants as any).manifest2?.extra?.expoGo?.debuggerHost ||
-    (Constants as any).manifest?.debuggerHost;
-
-  if (hostUri) {
-    const ip = hostUri.split(':')[0];
-    return `http://${ip}:5000/api`;
-  }
-
-  // Android emulator fallback
-  if (Platform.OS === 'android') {
-    return 'http://10.0.2.2:5000/api';
-  }
-
-  return 'http://localhost:5000/api';
+  return PRODUCTION_API_URL;
 };
 
 export const API_BASE_URL = getApiBaseUrl();

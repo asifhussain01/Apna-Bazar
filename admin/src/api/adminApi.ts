@@ -1,7 +1,7 @@
 const API_BASE_URL =
   (import.meta as any).env?.VITE_API_BASE_URL ||
   (import.meta as any).env?.VITE_API_URL ||
-  'http://localhost:5000/api';
+  'https://apna-bazar-api-2.onrender.com/api';
 
 export const getAuthToken = (): string | null => {
   return localStorage.getItem('apna_bazar_admin_token');
