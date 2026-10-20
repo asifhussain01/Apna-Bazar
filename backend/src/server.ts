@@ -54,6 +54,25 @@ app.get('/api/health', (req: Request, res: Response) => {
   });
 });
 
+// Root welcome route for deployment verification
+app.get('/', (req: Request, res: Response) => {
+  res.json({
+    success: true,
+    message: '🚀 Apna Bazar (अपना बाज़ार) API Server is live and running!',
+    status: 'online',
+    version: '1.0.0',
+    endpoints: {
+      health: '/api/health',
+      products: '/api/products',
+      categories: '/api/categories',
+      orders: '/api/orders',
+      admin: '/api/admin',
+      auth: '/api/auth',
+      settings: '/api/settings'
+    }
+  });
+});
+
 // Mount Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);

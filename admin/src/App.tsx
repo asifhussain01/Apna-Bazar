@@ -48,7 +48,12 @@ export const App: React.FC = () => {
   useEffect(() => {
     if (!currentUser) return;
 
-    const socket: Socket = io('http://localhost:5000', {
+    const socketUrl =
+      (import.meta as any).env?.VITE_SOCKET_URL ||
+      (import.meta as any).env?.VITE_API_URL?.replace(/\/api\/?$/, '') ||
+      'http://localhost:5000';
+
+    const socket: Socket = io(socketUrl, {
       transports: ['websocket', 'polling']
     });
 
